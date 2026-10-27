@@ -1,6 +1,6 @@
 # Hollow Map
 ## Objetivos
-
+apontar a localização de itens, inimigos e upgrades nos mapas de hollow knight e hollow knight: silksong
 ### Stack Tecnlógico
 - Backend: PHP estruturado com sessões nativas
 - Banco de dados: MySQL (PDO para segurança)
