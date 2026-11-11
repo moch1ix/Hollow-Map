@@ -1,19 +1,13 @@
-# Hollow Map
-## Objetivos
-apontar a localização de itens, inimigos e upgrades nos mapas de hollow knight e hollow knight: silksong
-### Stack Tecnlógico
-- Backend: PHP estruturado com sessões nativas
-- Banco de dados: MySQL (PDO para segurança)
-- Frontend: HTML5, PHP, CSS, Tailwind CSS
-
-#### Regras de negócio (CORE)
-Tratar senhas de usuários com hash bcript
-O sistema deve ter uma página de históricos e manter sempre os logs de qualquer alteração feita por qualquer usuário, para auditorias futuras.
-
-##### Regras Globais
-- Use sempre PDO para conexão e queries no MySQL para evitar SQL Injections
-- Mantenha o código limpo e comente apenas logicas complexas.
-- Separe os arquivos de forma lógica: um arquivo para conexão com a base (bd.php) e scripts de backend isolados e views em HTML5/PHP, nunca faça o sistema como um monolito, deixe sempre separados todas as regras para facilitar os futuros upgrades.
- - Estilize as telas em Tailwind de forma responsiva priorizando o MobileFrist.
- - Retorne sempre as mensagens de erros de forma claras na interface para o usuário (TOAST)
- - sempre trate as mensagens de caixa de mensagens nativas do navegador em um MODAL
+# Matriz de implementação
+- [x] PHP + PDO + MySQL
+- [x] Cadastro/login/logout e perfil
+- [x] Jogos e categorias separados
+- [x] API de mapas, categorias, regiões e marcadores
+- [x] Busca e filtros básicos
+- [x] Favoritos e progresso por usuário
+- [x] Painel de administração inicial e auditoria
+- [x] Percentuais de posição e status de verificação
+- [ ] Mapas base autorizados (inserir arquivos próprios)
+- [ ] Cadastro visual clicando no mapa (evolução planejada)
+- [ ] CRUD completo de regiões/categorias/usuários e edição/exclusão de marcadores
+- [ ] Testes integrados em ambiente MySQL real

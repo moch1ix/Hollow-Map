@@ -1,0 +1,7 @@
+<?php
+require_once __DIR__.'/config/bd.php';require_once __DIR__.'/includes/auth.php';
+if($_SERVER['REQUEST_METHOD']==='POST'){csrf_check();$name=trim($_POST['name']??'');$email=strtolower(trim($_POST['email']??''));$pass=$_POST['password']??'';
+if(strlen($name)<2||!filter_var($email,FILTER_VALIDATE_EMAIL)||strlen($pass)<10){$error='Informe nome, e-mail válido e senha com pelo menos 10 caracteres.';}
+else{try{$s=db()->prepare('INSERT INTO users(name,email,password_hash) VALUES(?,?,?)');$s->execute([$name,$email,password_hash($pass,PASSWORD_DEFAULT)]);$id=(int)db()->lastInsertId();$_SESSION['user']=['id'=>$id,'name'=>$name,'email'=>$email,'role'=>'user'];redirect('index.php');}catch(PDOException $e){$error='Não foi possível criar a conta. Verifique se o e-mail já existe.';}}}
+$pageTitle='Criar conta';require __DIR__.'/includes/header.php';require __DIR__.'/includes/navbar.php';?>
+<main class="auth-wrap"><form class="auth-card" method="post"><span class="eyebrow">NOVA JORNADA</span><h1>Crie sua conta.</h1><?php if(isset($error)):?><p class="notice"><?=e($error)?></p><?php endif;?><input type="hidden" name="csrf_token" value="<?=csrf_token()?>"><label>Nome</label><input name="name" required minlength="2"><label>E-mail</label><input type="email" name="email" required><label>Senha (mínimo 10 caracteres)</label><input type="password" name="password" required minlength="10"><button class="primary">Criar conta</button></form></main><?php require __DIR__.'/includes/footer.php';?>
